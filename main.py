@@ -4,7 +4,7 @@
 import discord, os, time,json
 from discord.ext.commands import has_permissions
 from colored import fg
-Token = input("Enter Discord Token > ")
+Token = input("Enter Token > ")
 success = fg('green')
 violet = fg("violet")
 failure = fg('red')
@@ -45,13 +45,14 @@ async def createauction(ctx, name, bininput, bid, tid, oge, information):
             obj["auctions"][name]["information"] = information
             obj["auctions"][name]["status"] = "running"
             obj["auctions"][name]["lastbid"] = None
-            embed = discord.Embed(title="Auction Bot by deviant#0001", color=0xFF0000)
+            embed = discord.Embed(title="New Auction!", color=0xFF0000)
             embed.add_field(name="Name", value=name)
             embed.add_field(name="TID", value=tid)
             embed.add_field(name="OGE", value=oge)
             embed.add_field(name="BID", value=bid)
             embed.add_field(name="BIN", value=bininput)
             embed.add_field(name="Information", value=information)
+            embed.set_footer(text="created by deviant#0001")
             c = open("auctions.json", "r+")
             c.truncate()
             c.write(json.dumps(obj))
